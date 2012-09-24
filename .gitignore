@@ -1,0 +1,8 @@
+target
+.project
+.classpath
+.springBeans
+.settings
+.DS_Store
+vf.gf.*
+WEB-INF/classes

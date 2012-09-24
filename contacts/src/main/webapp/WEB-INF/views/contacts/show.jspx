@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_org_springframework_data_examples_domain_Contact" object="${contact}" path="/contacts" z="KHMn0t5e8Ch9dFxcjYPR66Wy6NU=">
+        <field:display field="firstname" id="s_org_springframework_data_examples_domain_Contact_firstname" object="${contact}" z="HJLnAVQAc1yCq/dhIt6qgA4vOf4="/>
+        <field:display field="lastname" id="s_org_springframework_data_examples_domain_Contact_lastname" object="${contact}" z="npxqvCTh0h/wQT7FUZPPUJT+Jvg="/>
+        <field:display field="phones" id="s_org_springframework_data_examples_domain_Contact_phones" object="${contact}" z="tmbB0mpRDht4wX6Nc4JrSg7ZpHQ="/>
+        <field:display field="emailAddresses" id="s_org_springframework_data_examples_domain_Contact_emailAddresses" object="${contact}" z="PUfrJg9pDO4TDWpK7mTOasvSVy4="/>
+    </page:show>
+</div>
