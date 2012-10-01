@@ -23,6 +23,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		super.installFormatters(registry);
 		// Register application converters and formatters
 		registry.addConverter(getSetConverter());
+		registry.addConverter(getAddressToStringConverter());
 	}
 	
 	private Converter<Set<?>,String> getSetConverter() {
@@ -43,7 +44,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 	public Converter<Address, String> getAddressToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<org.springframework.data.examples.domain.Address, java.lang.String>() {
             public String convert(Address address) {
-                return new StringBuilder().append(address.getAddress1()).append(' ').append(address.getAddress2()).append(' ').append(address.getCity()).append(' ').append(address.getState()).toString();
+               return address.toString();
             }
         };
     }
@@ -84,6 +85,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
         registry.addConverter(getContactToStringConverter());
         registry.addConverter(getIdToContactConverter());
         registry.addConverter(getStringToContactConverter());
+        registry.addConverter(getStringToAddressConverter());
     }
 
 	public void afterPropertiesSet() {
