@@ -1,9 +1,0 @@
-acme.com
-gmail.com
-att.net
-aol.com
-earthlink.net
-yahoo.com
-hotmail.com
-verizon.net
-nosql.com
