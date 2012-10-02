@@ -109,7 +109,7 @@ public class Contact {
         this.emailAddresses = emailAddresses;
     }
 	
-	public Address getBillingAddress(Address billingAddress) {
+	public Address getBillingAddress() {
 		return this.billingAddress;
 	}
 	
@@ -117,7 +117,7 @@ public class Contact {
 		this.billingAddress = billingAddress;
 	}
 	
-	public Address getShippingAddress(Address shippingAddress) {
+	public Address getShippingAddress() {
 		return this.shippingAddress;
 	}
 	
