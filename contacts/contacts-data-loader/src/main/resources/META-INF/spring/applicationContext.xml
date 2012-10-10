@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gfe-data="http://www.springframework.org/schema/data/gemfire"
+	xmlns:gfe="http://www.springframework.org/schema/gemfire"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/gemfire http://www.springframework.org/schema/gemfire/spring-gemfire-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/data/gemfire http://www.springframework.org/schema/data/gemfire/spring-data-gemfire-1.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:component-scan base-package="org.springframework.data.examples" />
+
+	<beans:import
+		resource="classpath:META-INF/spring/contacts-jpa/applicationContext*.xml" />
+
+	<gfe:client-cache pool-name="pool" />
+
+	<gfe:client-region id="Contact" shortcut="PROXY"
+		pool-name="pool" />
+
+	<gfe:pool id="pool">
+		<gfe:locator host="192.168.20.131" port="10334" />
+	</gfe:pool>
+
+</beans:beans>

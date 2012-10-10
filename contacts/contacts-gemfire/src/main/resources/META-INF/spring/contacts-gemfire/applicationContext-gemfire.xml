@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:gfe-data="http://www.springframework.org/schema/data/gemfire"
+	xmlns:gfe="http://www.springframework.org/schema/gemfire"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/gemfire http://www.springframework.org/schema/gemfire/spring-gemfire-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/gemfire http://www.springframework.org/schema/data/gemfire/spring-data-gemfire-1.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:annotation-config/>
+	
+	<bean class="org.springframework.data.gemfire.GemfireTemplate">
+		<property name="region" ref="Contact" />
+	</bean>
+
+	<beans profile="default">
+		<gfe:client-cache pool-name="pool" />
+
+		<gfe:client-region id="Contact" pool-name="pool" />
+
+		<gfe:pool id="pool">
+			<gfe:locator host="192.168.20.131" port="10334" />
+		</gfe:pool>
+	</beans>
+	
+    <beans profile="unit-test">
+    	<gfe:cache/>
+    	<gfe:local-region id="Contact"/>
+    </beans>
+</beans>
