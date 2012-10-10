@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2012 by the original author(s).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.springframework.data.examples.domain;
 
 import java.io.Serializable;
@@ -12,25 +27,23 @@ import org.springframework.util.Assert;
 
 @Region
 public class Contact implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    private Long id;
+	private Long id;
+	private String firstname;
+	private String lastname;
+	private Address billingAddress;
+	private Address shippingAddress;
+	private Set<Phone> phones = new HashSet<Phone>();
+	private Set<EmailAddress> emailAddresses = new HashSet<EmailAddress>();
 
-    private String firstname;
+	public Contact() {
+	}
 
-    private String lastname;
-
-    private Set<Phone> phones = new HashSet<Phone>();
-
-    private Set<EmailAddress> emailAddresses = new HashSet<EmailAddress>();
-
-    public Contact() {
-    	
-    }
-    
-	public Contact(String firstname, String lastname) {
+	public Contact(long id, String firstname, String lastname) {
+		this.id = id;
 		Assert.hasText(firstname);
 		Assert.hasText(lastname);
 
@@ -49,46 +62,62 @@ public class Contact implements Serializable {
 	}
 
 	public String toString() {
-        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+	}
 
 	public String getFirstname() {
-        return this.firstname;
-    }
+		return this.firstname;
+	}
 
 	public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+		this.firstname = firstname;
+	}
 
 	public String getLastname() {
-        return this.lastname;
-    }
+		return this.lastname;
+	}
 
 	public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+		this.lastname = lastname;
+	}
 
 	public Set<Phone> getPhones() {
-        return this.phones;
-    }
+		return this.phones;
+	}
 
 	public void setPhones(Set<Phone> phones) {
-        this.phones = phones;
-    }
+		this.phones = phones;
+	}
 
 	public Set<EmailAddress> getEmailAddresses() {
-        return this.emailAddresses;
-    }
+		return this.emailAddresses;
+	}
 
 	public void setEmailAddresses(Set<EmailAddress> emailAddresses) {
-        this.emailAddresses = emailAddresses;
-    }	
+		this.emailAddresses = emailAddresses;
+	}
+
+	public Address getBillingAddress() {
+		return this.billingAddress;
+	}
+
+	public void setBillingAddress(Address billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
+	public Address getShippingAddress() {
+		return this.shippingAddress;
+	}
+
+	public void setShippingAddress(Address shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
 
 	public Long getId() {
-        return this.id;
-    }
+		return this.id;
+	}
 
 	public void setId(Long id) {
-        this.id = id;
-    }
+		this.id = id;
+	}
 }

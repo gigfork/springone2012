@@ -1,32 +1,45 @@
+/*
+ * Copyright (c) 2012 by the original author(s).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.springframework.data.examples.domain;
+
 import java.io.Serializable;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.util.Assert;
 
-
+/**
+ * 
+ * @author David Turanski
+ *
+ */
 public class Address implements Serializable {
- 
+
 	private static final long serialVersionUID = 1L;
 
 	private String address1;
+	private String address2;
+	private String city;
+	private String state;
+	private String country;
+	private String postalCode;
 
-    private String address2;
+	public Address() {
 
-    private String city;
+	}
 
-    private String state;
-
-    private String country;
-
-    private String postalCode;
-    
-    public Address() {
-    	
-    }
-    
-    /**
+	/**
 	 * 
 	 * @param address1
 	 * @param address2
@@ -49,54 +62,58 @@ public class Address implements Serializable {
 	}
 
 	public String toString() {
-        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.address1).append(this.address2 == null ? " " : " " + this.address2).append(" ")
+				.append(this.city).append(this.state == null ? " " : ", " + this.state).append(", ")
+				.append(this.country).append(" ").append(this.postalCode);
+		return sb.toString();
+	}
 
 	public String getAddress1() {
-        return this.address1;
-    }
+		return this.address1;
+	}
 
 	public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
+		this.address1 = address1;
+	}
 
 	public String getAddress2() {
-        return this.address2;
-    }
+		return this.address2;
+	}
 
 	public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
+		this.address2 = address2;
+	}
 
 	public String getCity() {
-        return this.city;
-    }
+		return this.city;
+	}
 
 	public void setCity(String city) {
-        this.city = city;
-    }
+		this.city = city;
+	}
 
 	public String getState() {
-        return this.state;
-    }
+		return this.state;
+	}
 
 	public void setState(String state) {
-        this.state = state;
-    }
+		this.state = state;
+	}
 
 	public String getCountry() {
-        return this.country;
-    }
+		return this.country;
+	}
 
 	public void setCountry(String country) {
-        this.country = country;
-    }
+		this.country = country;
+	}
 
 	public String getPostalCode() {
-        return this.postalCode;
-    }
+		return this.postalCode;
+	}
 
 	public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
+		this.postalCode = postalCode;
+	}
 }

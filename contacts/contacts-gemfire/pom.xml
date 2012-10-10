@@ -14,12 +14,12 @@
 	<name>contacts-gemfire</name>
 	
 	<dependencies>
-	<!-- 
+	
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-gemfire</artifactId>
-			<version>1.2.0.RC1</version>
+			<version>1.2.0.RELEASE</version>
 		</dependency>
- -->
+
 	</dependencies>
 	</project>

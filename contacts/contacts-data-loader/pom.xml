@@ -26,6 +26,12 @@
  	   		<artifactId>contacts-jpa</artifactId>
 		    <version>0.1.0.BUILD-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.data.examples</groupId>
+ 	   		<artifactId>contacts-common</artifactId>
+		    <version>0.1.0.BUILD-SNAPSHOT</version>
+		</dependency>
 
 	</dependencies>
 	</project>

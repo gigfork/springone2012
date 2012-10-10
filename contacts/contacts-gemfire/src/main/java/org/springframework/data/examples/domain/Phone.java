@@ -1,4 +1,19 @@
-package org.springframework.data.examples.domain;
+
+/*
+ * Copyright (c) 2012 by the original author(s).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */package org.springframework.data.examples.domain;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;
@@ -7,18 +22,22 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
-
+/**
+ * 
+ * @author David Turanski
+ *
+ */
 public class Phone implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
 
-	private String number;
+    private String number;
  
 	private static final String PHONE_REGEX = "^(\\d{3}-){0,1}[2-9]\\d{2}-\\d{3}-\\d{4}$";
 	private static final Pattern PATTERN = Pattern.compile(PHONE_REGEX);
 	
 	public static enum Type {MOBILE,OFFICE,HOME,FAX} 
-	
+
 	private Type type;
 	
 	public Phone(String number,Type type) {
@@ -66,11 +85,13 @@ public class Phone implements Serializable {
 			return StringUtils.hasText(source) ? new Phone(source,Phone.Type.OFFICE) : null;
 		}
 	}
+
 	
 	public Phone() {
         super();
     }
 
+	
 	public String getNumber() {
         return this.number;
     }

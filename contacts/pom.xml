@@ -18,6 +18,7 @@
         <module>contacts-jpa</module>
         <module>contacts-gemfire</module>
         <module>contacts-web</module>
+        <module>contacts-data-loader</module>
     </modules>
     
     <repositories>
@@ -143,6 +144,7 @@
                 <configuration>
                     <printSummary>false</printSummary>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                   <forkMode>always</forkMode>
                 </configuration>
             </plugin>
             <plugin>
