@@ -21,12 +21,6 @@
 		<property name="url" value="${database.url}" />
 		<property name="username" value="${database.username}" />
 		<property name="password" value="${database.password}" />
-		<property name="testOnBorrow" value="true" />
-		<property name="testOnReturn" value="true" />
-		<property name="testWhileIdle" value="true" />
-		<property name="timeBetweenEvictionRunsMillis" value="1800000" />
-		<property name="numTestsPerEvictionRun" value="3" />
-		<property name="minEvictableIdleTimeMillis" value="1800000" />
 	</bean>
 
 	<bean id="jpaVendorAdapter"
@@ -41,26 +35,6 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 	</bean>
-
-	<beans profile="unit-test">
-		<util:properties id="jpaProperties">
-			<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-			<!-- value="create" to build a new database on each run; value="update" 
-				to modify an existing database; value="create-drop" means the same as "create" 
-				but also drops tables when Hibernate closes; value="validate" makes no changes 
-				to the database -->
-			<prop key="hibernate.hbm2ddl.auto">create</prop>
-			<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-			<prop key="hibernate.connection.charSet">UTF-8</prop>
-		</util:properties>
-		
-		<util:properties id="dataSourceProperties">
-		 <prop key="database.driverClassName">org.hsqldb.jdbcDriver</prop>
-		 <prop key="database.url">jdbc:hsqldb:mem:contacts</prop>
-		 <prop key="database.username">sa</prop>
-		 <prop key="database.password"></prop>
-		</util:properties>
-	</beans>
 	
 	<beans profile="default">
 		<util:properties id="jpaProperties">
@@ -82,5 +56,24 @@
 		</util:properties>
 	</beans>
 	
+	<beans profile="unit-test">
+		<util:properties id="jpaProperties">
+			<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+			<!-- value="create" to build a new database on each run; value="update" 
+				to modify an existing database; value="create-drop" means the same as "create" 
+				but also drops tables when Hibernate closes; value="validate" makes no changes 
+				to the database -->
+			<prop key="hibernate.hbm2ddl.auto">create</prop>
+			<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+			<prop key="hibernate.connection.charSet">UTF-8</prop>
+		</util:properties>
+		
+		<util:properties id="dataSourceProperties">
+		 <prop key="database.driverClassName">org.hsqldb.jdbcDriver</prop>
+		 <prop key="database.url">jdbc:hsqldb:mem:contacts</prop>
+		 <prop key="database.username">sa</prop>
+		 <prop key="database.password"></prop>
+		</util:properties>
+	</beans>	
 
 </beans>

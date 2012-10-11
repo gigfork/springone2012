@@ -19,15 +19,14 @@ import java.util.List;
 
 import org.springframework.data.examples.domain.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 /**
  * 
  * @author David Turanski
  *
  */
-public interface ContactRepository extends JpaRepository<Contact, Long>, JpaSpecificationExecutor<Contact> {
+public interface ContactRepository extends JpaRepository<Contact, Long> {
+	
 	List<Contact> findByFirstname(String firstname);
-
 	List<Contact> findByLastnameStartsWith(String lastname);
 }

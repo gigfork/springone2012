@@ -26,7 +26,7 @@ import org.springframework.data.gemfire.repository.GemfireRepository;
  *
  */
 public interface ContactRepository extends GemfireRepository<Contact, Long>, CustomPagingRepository {
+	
 	List<Contact> findByFirstname(String firstname);
 	List<Contact> findByLastnameStartsWith(String lastname);
-	List<Contact> findByFirstnameStartsWith(String firstname);
 }
