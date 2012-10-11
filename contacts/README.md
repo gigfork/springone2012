@@ -29,10 +29,10 @@ Maven Build and Run
 The system property will activate a corresponding maven profile to build and deploy with either contacts-jpa or contacts-gemfire
 
 
-open your browser to [http://localhost/contacts-web/contacts]
+open your browser to [http://localhost:8080/contacts-web/contacts](http://localhost:8080/contacts-web/contacts)
 
-To find by last name starts with use the request parameter 'last', e.g.,  [http://localhost/contacts-web/contacts?last=T]
-To find by first name use the request parameter 'first', e.g.,  [http://localhost/contacts-web/contacts?first=David]
+To find by last name starts with use the request parameter 'last', e.g.,  [http://localhost:8080/contacts-web/contacts?last=T](http://localhost:8080/contacts-web/contacts?last=T)
+To find by first name use the request parameter 'first', e.g.,  [http://localhost:8080/contacts-web/contacts?first=David](http://localhost:8080/contacts-web/contacts?first=David)
  
 
 Also the system property is used by Spring to load the correct configuration.
