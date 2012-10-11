@@ -1,4 +1,4 @@
 Spring One 2102 Demos
 =====================
 
-see [contacts](./contacts/README.md)
+see [contacts](./springone2012/contacts/README.md)
