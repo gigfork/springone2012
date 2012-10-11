@@ -21,6 +21,17 @@ Hibernate will auto-generate the schema. Alternately, you can use contacts-mysql
 
 To start a cache server and locator, it is convenient to use the [spring-gemfire-examples](https://github.com/SpringSource/spring-gemfire-examples) project. 
 
+Required GemFire components may be started using the provided gradle build script.  Clone the git repo and cd to the project directory.
+
+To build the project from a terminal window:
+		./gradlew build
+	
+To start the locator from a terminal window:
+		./gradlew -q start-locator-10334
+		
+To start the cache server, use the provided [cache-config.xml](https://github.com/dturanski/springone2012/blob/master/contacts/cache-config.xml). Copy it to the spring-gemfire-examples directory and type:
+		./gradlew -q run-generic-server -Pargs=cache-config.xml
+		
 ## A word about GemFire locators
 -------------------------------------------------------------------------------------------------------------
 Note that using a locator requires a GemFire installation. A limited development edition or full trial version 
@@ -51,20 +62,7 @@ e.g.,
 
 If you really want to go to town create properties for each of the server ports and replace the hard code values with placeholders.
 
--------------------------------------------------------------------------------------------------------------
-
-
-Required GemFire components may be started using the provided gradle build script.  Clone the git repo and cd to the project directory.
-
-To build the project from a terminal window:
-		./gradlew build
-	
-To start the locator from a terminal window:
-		./gradlew -q start-locator-10334
-		
-To start the cache server, use the provided [cache-config.xml](https://github.com/dturanski/springone2012/blob/master/contacts/cache-config.xml). Copy it to the spring-gemfire-examples directory and type:
-		./gradlew -q run-generic-server -Pargs=cache-config.xml
-		
+-------------------------------------------------------------------------------------------------------------		
 
 # Maven Build and Run
 	cd contacts
