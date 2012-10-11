@@ -1,7 +1,7 @@
 Contacts Demo
 =============
 
-Demo Code For SpringOne 2012 Presentation
+Demo Code for SpringOne 2012 presentation [Getting Started With Spring Data and Distributed Data Grids](http://www.springone2gx.com/topics/getting_started_with_spring_data_and_distributed_database_grids)
 
 # Modules
 
