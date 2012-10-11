@@ -24,12 +24,15 @@ To start a cache server and locator, it is convenient to use the [spring-gemfire
 Required GemFire components may be started using the provided gradle build script.  Clone the git repo and cd to the project directory.
 
 To build the project from a terminal window:
+
 		./gradlew build
 	
 To start the locator from a terminal window:
+
 		./gradlew -q start-locator-10334
 		
 To start the cache server, use the provided [cache-config.xml](https://github.com/dturanski/springone2012/blob/master/contacts/cache-config.xml). Copy it to the spring-gemfire-examples directory and type:
+
 		./gradlew -q run-generic-server -Pargs=cache-config.xml
 		
 ## A word about GemFire locators
@@ -65,6 +68,7 @@ If you really want to go to town create properties for each of the server ports 
 -------------------------------------------------------------------------------------------------------------		
 
 # Maven Build and Run
+
 	cd contacts
 	mvn clean install
 	cd contacts-web
@@ -72,10 +76,10 @@ If you really want to go to town create properties for each of the server ports 
 
 The system property will activate a corresponding maven profile to build and deploy with either contacts-jpa or contacts-gemfire
 
-
 Also the system property is used by Spring to load the correct configuration.
 
 # STS Build and Run
+
 - import modules using Import -> Maven -> Existing Maven Projects
 - select contacts-web and open the context menu: Properties->Maven and type gemfire or jpa in the Active Maven Profiles. Press OK.
 - edit src/main/resources/META-INF/spring/webApplicationContext.xml and edit the default (jpa or gemfire) value:
