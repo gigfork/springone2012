@@ -1,7 +1,10 @@
 Contacts Demo
 =============
 
-Demo Code for the SpringOne 2012 presentation [Getting Started With Spring Data and Distributed Data Grids](http://www.springone2gx.com/topics/getting_started_with_spring_data_and_distributed_database_grids)
+Demo Code for the SpringOne 2012 presentation [Getting Started With Spring Data and Distributed Data Grids](http://www.springone2gx.com/topics/getting_started_with_spring_data_and_distributed_database_grids). 
+This demonstrates a simple migration of a web application from SQL to GemFire using Spring Data repositories.
+
+
 
 # Modules
 
