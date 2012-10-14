@@ -72,6 +72,16 @@ public class ContactController {
 		return "contacts/show";
 	}
 
+	/**
+	 * list contacts
+	 * 
+	 * @param page
+	 * @param size
+	 * @param firstname
+	 * @param lastname
+	 * @param uiModel
+	 * @return
+	 */
 	@RequestMapping(produces = "text/html")
 	public String list(@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "size", required = false) Integer size,
@@ -83,14 +93,21 @@ public class ContactController {
 		Iterable<Contact> contacts = null;
 
 		if (StringUtils.hasText(firstname)) {
+		
 			contacts = contactRepository.findByFirstname(firstname);
+		
 		} else if (StringUtils.hasText(lastname)) {
+			
 			contacts = contactRepository.findByLastnameStartsWith(lastname);
+		
 		} else {
+		
 			int pageNum = page == null ? 0 : page.intValue() - 1;
 			contacts = contactRepository.findAll(new org.springframework.data.domain.PageRequest(pageNum, sizeNum))
 					.getContent();
+		
 		}
+		
 		float nrOfPages = (float) contactRepository.count() / sizeNum;
 		uiModel.addAttribute("contacts", contacts);
 		uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1
