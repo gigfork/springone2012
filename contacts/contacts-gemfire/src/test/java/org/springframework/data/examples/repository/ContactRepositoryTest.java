@@ -38,7 +38,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath*:META-INF/spring/contacts-gemfire/applicationContext*.xml")
+@ContextConfiguration("classpath*:META-INF/spring/contacts-repository/applicationContext*.xml")
 @ActiveProfiles("unit-test")
 public class ContactRepositoryTest {
 	@Autowired

@@ -36,7 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath*:META-INF/spring/contacts-jpa/applicationContext*.xml")
+@ContextConfiguration("classpath*:META-INF/spring/contacts-repository/applicationContext*.xml")
 @ActiveProfiles("unit-test")
 public class ContactIntegrationTest {
 

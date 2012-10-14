@@ -63,7 +63,6 @@ public class CacheLoader {
 		Iterable<Contact> contacts = contactRepository.findAll();
 		log.info("loading cache...");
 	 
-		
 		for (Contact contact: contacts ) {
 			contactRegion.remove(contact.getId());
 			//Remove hibernate persistent set

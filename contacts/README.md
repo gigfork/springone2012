@@ -36,9 +36,9 @@ To start the locator from a terminal window:
 		
 To start the cache server, use the provided [cache-config.xml](https://github.com/dturanski/springone2012/blob/master/contacts/cache-config.xml). Copy it to the spring-gemfire-examples directory and type:
 
-		./gradlew -q run-generic-server -Pargs=cache-config.xml
+		./gradlew -q run-generic-server -Pargs=cache-config.xml		
 		
-## A word about GemFire locators
+### A word about GemFire locators
 -------------------------------------------------------------------------------------------------------------
 Note that using a locator requires a GemFire installation. A limited development edition or full trial version 
 may be downloaded from the [product home page](https://www.vmware.com/products/application-platform/vfabric-gemfire/overview.html).
@@ -51,14 +51,14 @@ Locate the following lines:
 			<gfe:locator host="${locatorHost}" port="${locatorPort}" />
 		</gfe:pool>
 
-and change to:
+and change to something like:
 
 		<gfe:pool id="pool">
 			<gfe:server host="${serverHost}" port="40404" />
 			<gfe:server host="${serverHost}" port="40405" />		
 		</gfe:pool>
 		
-The above configuration will work with one or two cache servers. Also create a serverHost property, in the 'gemfireProperties' bean, 
+The above configuration will work with one or two cache server instances running on the same host. Also create a serverHost property, in the 'gemfireProperties' bean, 
 e.g.,
  
  		<util:properties id="gemfireProperties">
@@ -66,29 +66,32 @@ e.g.,
 			<prop key="serverHost">localhost</prop>
 		</util:properties>
 
-If you really want to go to town create properties for each of the server ports and replace the hard code values with placeholders.
+The provide cache-config.xml is configured to find the first available port in the range 40404 - 40406. If running each cache server
+on a different host, change the configuration to :
+
+		<gfe:pool id="pool">
+			<gfe:server host="${serverHost1}" port="40404" />
+			<gfe:server host="${serverHost2}" port="40404" />		
+		</gfe:pool>
+
 
 -------------------------------------------------------------------------------------------------------------		
+
+To migrate the data from MySQL, start the cache server(s) and optionally, the locator and run contacts-data-loader/..CacheLoader
 
 # Maven Build and Run
 
 	cd contacts
 	mvn clean install
 	cd contacts-web
-	mvn tomcat:run -Dspring.data.repository=['jpa' or 'gemfire']
+	mvn tomcat:run -P['jpa' or 'gemfire']
 
-The system property will activate a corresponding maven profile to build and deploy with either contacts-jpa or contacts-gemfire
-
-Also the system property is used by Spring to load the correct configuration.
+Passing the corresponding maven profile to build and deploy with either contacts-jpa or contacts-gemfire
 
 # STS Build and Run
 
 - import modules using Import -> Maven -> Existing Maven Projects
 - select contacts-web and open the context menu: Properties->Maven and type gemfire or jpa in the Active Maven Profiles. Press OK.
-- edit src/main/resources/META-INF/spring/webApplicationContext.xml and edit the default (jpa or gemfire) value:
-
-  		<import resource="classpath:/META-INF/spring/contacts-${spring.data.repository:jpa}/applicationContext*.xml"/>
-
 - deploy the contacts-web application a tcServer instance and start the instance
 
 # Run the Demo
