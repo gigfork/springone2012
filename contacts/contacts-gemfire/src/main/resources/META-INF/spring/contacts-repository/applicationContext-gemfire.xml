@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:gfe-data="http://www.springframework.org/schema/data/gemfire"
+	xmlns:gfe="http://www.springframework.org/schema/gemfire"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/gemfire http://www.springframework.org/schema/gemfire/spring-gemfire-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/data/gemfire http://www.springframework.org/schema/data/gemfire/spring-data-gemfire-1.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:annotation-config/>
+	<context:property-placeholder properties-ref="gemfireProperties"/>
+	
+	<util:properties id="gemfireProperties">
+		<prop key="locatorPort">10334</prop>
+		<prop key="locatorHost">192.168.20.131</prop>
+	</util:properties>
+	
+	<bean class="org.springframework.data.gemfire.GemfireTemplate">
+		<property name="region" ref="Contact" />
+	</bean>
+
+	<beans profile="default">
+		<gfe:client-cache pool-name="pool" />
+
+		<gfe:client-region id="Contact" pool-name="pool" />
+
+		<gfe:pool id="pool">
+			<gfe:locator host="${locatorHost}" port="${locatorPort}" />
+		</gfe:pool>
+	</beans>
+	
+    <beans profile="unit-test">
+    	<gfe:cache/>
+    	<gfe:local-region id="Contact"/>
+    </beans>
+</beans>

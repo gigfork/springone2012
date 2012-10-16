@@ -23,6 +23,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.mapping.Region;
+import javax.validation.constraints.NotNull;
 import org.springframework.util.Assert;
 
 @Region
@@ -32,8 +33,13 @@ public class Contact implements Serializable {
 
 	@Id
 	private Long id;
+	
+	@NotNull
 	private String firstname;
+	
+	@NotNull
 	private String lastname;
+	
 	private Address billingAddress;
 	private Address shippingAddress;
 	private Set<Phone> phones = new HashSet<Phone>();
